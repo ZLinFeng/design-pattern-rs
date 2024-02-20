@@ -1,0 +1,40 @@
+#[derive(Debug, Clone)]
+struct Cue {
+    name: String,
+}
+
+impl Cue {
+    fn new(name: String) -> Self {
+        Cue { name: name }
+    }
+}
+
+#[derive(Debug, Clone)]
+struct NineBall {
+    balls: Vec<u8>,
+}
+
+impl NineBall {
+    fn new(balls: Vec<u8>) -> Self {
+        NineBall { balls: balls }
+    }
+}
+
+fn main() {
+    let snooker_cue = Cue::new(String::from("小头杆"));
+
+    let mut chinese_ball_cue = snooker_cue.clone();
+
+    chinese_ball_cue.name = String::from("大头杆");
+
+    println!("Clone前: {:?}", snooker_cue);
+    println!("Clone后: {:?}", chinese_ball_cue);
+
+    let nine_balls = NineBall::new(vec![1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    let mut chinese_balls = nine_balls.clone();
+    let mut add_balls: Vec<u8> = vec![10, 11, 12, 13, 14, 15];
+    chinese_balls.balls.append(&mut add_balls);
+
+    println!("九球: {:?}", nine_balls);
+    println!("中八: {:?}", chinese_balls);
+}
